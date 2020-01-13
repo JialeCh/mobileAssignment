@@ -189,8 +189,10 @@ class EditProfile : Fragment() {
         data["imageUrl"] = uri
         Glide.with(activity!!).load(uri)
             .into(imagebtn)
-        db.collection("User")
-            .add(data)
+        db.collection("User").document(user?.uid.toString())
+            .update(mapOf(
+                "profile" to uri
+            ))
             .addOnSuccessListener { documentReference ->
                 Toast.makeText(context, "Saved to DB", Toast.LENGTH_LONG).show()
             }
@@ -201,14 +203,30 @@ class EditProfile : Fragment() {
     private fun uploadImage(){
         if(filePath != null){
             val ref = storageReference?.child("ProfileUser/" + UUID.randomUUID().toString())
-            ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
-                Toast.makeText(context, "Image Uploaded", Toast.LENGTH_SHORT).show()
-            })?.addOnFailureListener(OnFailureListener { e ->
-                Toast.makeText(context, "Image Uploading Failed " + e.message, Toast.LENGTH_SHORT).show()
-            })
+            val uploadTask = ref?.putFile(filePath!!)
+
+            val urlTask = uploadTask?.continueWithTask(Continuation<UploadTask.TaskSnapshot, Task<Uri>> { task ->
+                if (!task.isSuccessful) {
+                    task.exception?.let {
+                        throw it
+                    }
+                }
+                return@Continuation ref.downloadUrl
+            })?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val downloadUri = task.result
+                    addUploadRecordToDb(downloadUri.toString())
+                } else {
+                    // Handle failures
+                }
+            }?.addOnFailureListener{
+
+            }
         }else{
-            Toast.makeText(context, "Please Select an Image", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Please Upload an Image", Toast.LENGTH_SHORT).show()
         }
     }
 
 }
+
+

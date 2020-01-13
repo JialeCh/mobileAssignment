@@ -1,6 +1,7 @@
 package com.example.mobileassigmentjobplatform
 
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -21,7 +22,7 @@ class ResetPassword : AppCompatActivity() {
         }
 
         btnCancel.setOnClickListener {
-            //return back to login page
+            login()
         }
     }
 
@@ -57,5 +58,9 @@ class ResetPassword : AppCompatActivity() {
                     Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+    private fun login() {
+
+        startActivity(Intent(this, LogIn :: class.java))
     }
 }

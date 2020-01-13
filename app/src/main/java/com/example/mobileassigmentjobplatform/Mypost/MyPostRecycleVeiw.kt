@@ -12,10 +12,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
+import com.bumptech.glide.Glide
 import com.example.mobileassigmentjobplatform.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_my_post_recycle_veiw.*
+import kotlinx.android.synthetic.main.fragment_my_post_recycle_veiw.btnEdit
+import kotlinx.android.synthetic.main.fragment_user_profile.*
 
 
 class MyPostRecycleVeiw : Fragment() {
@@ -61,6 +64,8 @@ class MyPostRecycleVeiw : Fragment() {
         txtMyPost_Date.text=args.date
         txtMypost_Location.text=args.location
         txtMyPost_CompanyName.text=args.companyName
+        Glide.with(activity!!).load(args.image)
+            .into(imgView_MyPost)
     }
 
     private fun deleteData(jobID : String){

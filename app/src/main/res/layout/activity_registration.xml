@@ -5,9 +5,25 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_ground"
+    android:background="@drawable/background"
     tools:context=".Register">
 
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="224dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="94dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="93dp"
+        android:text="Register"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/passwordTxt"
@@ -24,9 +40,9 @@
 
     <EditText
         android:id="@+id/emailTxt"
-        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
 
 
         android:layout_marginLeft="20dp"
@@ -62,14 +78,13 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="358dp"
         android:layout_marginRight="20dp"
-        android:background="@drawable/rounded_btn2"
+        android:background="@drawable/rounded_btn"
         android:text="Next"
         android:textAllCaps="false"
         android:textColor="@android:color/black"
         android:textSize="20sp"
 
         />
-
 
 
     <fragment

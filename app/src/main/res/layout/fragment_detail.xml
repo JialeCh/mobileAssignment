@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".postlisting.DetailFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,8 +15,10 @@
             android:id="@+id/relative_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -26,7 +29,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="Title"
-                android:textColor="#000026"
+                android:textColor="@android:color/white"
                 android:textSize="25dp"
                 android:textStyle="bold" />
 
@@ -38,14 +41,14 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="Location"
-                android:textColor="#000026"
+                android:textColor="@color/grey"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imgView_MyPost"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
                 android:layout_below="@id/txtMypost_Location"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
@@ -63,7 +66,7 @@
                 android:layout_toEndOf="@id/imgView_MyPost"
                 android:layout_toRightOf="@id/imgView_MyPost"
                 android:text="CompanyName"
-                android:textColor="#000"
+                android:textColor="@android:color/white"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -78,20 +81,21 @@
                 android:layout_toEndOf="@id/imgView_MyPost"
                 android:layout_toRightOf="@id/imgView_MyPost"
                 android:text="Post On What Date"
+                android:textColor="@color/grey"
                 android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/txtMyPost_Salary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="155dp"
+                android:layout_height="44dp"
                 android:layout_below="@id/txtMyPost_Date"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="106dp"
+                android:layout_marginLeft="106dp"
+                android:layout_marginTop="23dp"
                 android:layout_toEndOf="@id/imgView_MyPost"
                 android:layout_toRightOf="@id/imgView_MyPost"
                 android:text="RM1800 /Month"
-                android:textColor="#FF1493"
+                android:textColor="@color/colorAccent"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
@@ -101,6 +105,7 @@
             android:id="@+id/txtDetail_inform"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

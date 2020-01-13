@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.mobileassigmentjobplatform.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -55,6 +56,8 @@ class DetailFragment : Fragment() {
         txtMyPost_Date.text=args.date
         txtMypost_Location.text=args.location
         txtMyPost_CompanyName.text=args.companyName
+        Glide.with(activity!!).load(args.image)
+            .into(imgView_MyPost)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

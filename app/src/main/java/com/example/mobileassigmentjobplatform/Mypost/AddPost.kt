@@ -1,8 +1,11 @@
 package com.example.mobileassigmentjobplatform.Mypost
 
+import android.app.Activity
 import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,15 +15,27 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.constraintlayout.widget.Constraints
 import androidx.fragment.app.DialogFragment
+import com.bumptech.glide.Glide
 import com.example.mobileassigmentjobplatform.R
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 
 import kotlinx.android.synthetic.main.fragment_my_post.*
+import java.io.IOException
 import java.util.*
 
 class AddPost : DialogFragment() {
+    private val PICK_IMAGE_REQUEST = 1
+    private var filePath: Uri? = null
+    private var firebaseStorage: FirebaseStorage? = null
+    private var storageReference: StorageReference? = null
+    private val mAuth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +51,10 @@ class AddPost : DialogFragment() {
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        firebaseStorage = FirebaseStorage.getInstance()
+        storageReference = FirebaseStorage.getInstance().reference
         val time = Timestamp(Date()).toDate().toString()
-        JPinform.text = "Date : "+ time
+        JPDate.text = "Date : "+ time
 
         btn_Post.setOnClickListener {
             postingJob(time)
@@ -45,26 +62,21 @@ class AddPost : DialogFragment() {
         btnExit.setOnClickListener {
             dialog?.dismiss()
         }
-        selectphoto_button_register.setOnClickListener {
-            Log.d(Constraints.TAG, "Try to show photo selector")
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = "image/*"
-            startActivityForResult(intent, 0)
-        }
+
     }
+
+
 
     private fun postingJob(time:String) {
 
 
         val db = FirebaseFirestore.getInstance()
-        val mAuth = FirebaseAuth.getInstance()
+       
         val user = mAuth.currentUser
-        var jpDate: String = time
         var jpinform: String = Jpinform.text.toString()
         var jpSalary: String = JPsalary.text.toString()
         var jptitle: String = Jptitle.text.toString()
         var location: String = Jplocation.text.toString()
-        var userID: String = ""
         var JPcompanyName: String = JPcompanyName.text.toString()
 
         when {
@@ -101,9 +113,7 @@ class AddPost : DialogFragment() {
                 progressDialog.setMessage("Please wait, this may take a while")
                 progressDialog.setCanceledOnTouchOutside(false)
                 progressDialog.show()
-
-
-
+                
                 val docData = hashMapOf(
                     "JPcompanyName" to JPcompanyName,
                     "JPDate" to time,
@@ -115,9 +125,9 @@ class AddPost : DialogFragment() {
                     "userID" to user?.uid
 
                 )
-                var Documentname : String = docData.keys.toString()
-                db.collection("JobPost").document(Documentname)
-                    .set(docData)
+
+                db.collection("JobPost")
+                    .add(docData)
                     .addOnSuccessListener {
                         Log.d(Constraints.TAG, "DocumentSnapshot successfully written!")
                         Toast.makeText(
@@ -140,4 +150,7 @@ class AddPost : DialogFragment() {
         }
 
     }
+
+
+
 }

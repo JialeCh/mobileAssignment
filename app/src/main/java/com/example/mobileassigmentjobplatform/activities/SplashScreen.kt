@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.mobileassigmentjobplatform.LogIn
 import com.example.mobileassigmentjobplatform.MainActivity
 import com.example.mobileassigmentjobplatform.R
+import kotlinx.android.synthetic.main.activity_splash_screen.*
 import java.lang.Exception
 
 
@@ -16,8 +17,7 @@ class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
-        val actionBar = actionBar
-        actionBar?.hide()
+
         val background = object : Thread(){
             override fun run() {
                 try {

@@ -9,7 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="698dp">
+        android:layout_height="698dp"
+        android:background="@drawable/background">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycleV_searchListing"
@@ -36,6 +37,10 @@
             android:ems="10"
             android:hint="Search...."
             android:inputType="textPersonName"
+            android:textColor="@android:color/white"
+            android:textColorHint="@color/grey"
+            android:textColorLink="@color/colorAccent"
+            android:textCursorDrawable="@color/colorAccent"
             app:layout_constraintBottom_toTopOf="@id/recycleV_searchListing"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -45,8 +50,9 @@
             android:id="@+id/btnSearch"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:background="@android:drawable/screen_background_light_transparent"
+            android:background="@android:drawable/screen_background_dark_transparent"
             android:src="@android:drawable/ic_search_category_default"
+            android:tint="@color/red"
             app:layout_constraintBottom_toTopOf="@id/recycleV_searchListing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/search_EditText"

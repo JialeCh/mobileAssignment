@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.mobileassigmentjobplatform.R
 import com.example.mobileassigmentjobplatform.`class`.JobPost
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +35,8 @@ class MyApplyAdapter(var jobListItem :ArrayList<JobPost> ): RecyclerView.Adapter
         holder.view.txtSalary.setText(jobListItem[position].getJpSalary().toString())
         holder.view.txtLocation.text=jobListItem[position].getLocation()
         holder.view.txtCompanyName.setText(jobListItem[position].getjpCompanyName())
+        Glide.with(holder.view).load(jobListItem[position].getJpImage())
+            .into(holder.view.imgView_MyPost)
         holder.view.txtDate.setText(jobListItem[position].getJpDate())
         holder.view.txtTitle.setText(jobListItem[position].getJptitle())
         holder.view.setOnClickListener {

@@ -5,11 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Mypost.EditPost">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/back_ground">
+        android:background="@drawable/background">
+
+
+
+
 
         <RelativeLayout
             android:id="@+id/relative_Layout"
@@ -45,25 +51,26 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imgView_MyPost"
-                android:layout_width="wrap_content"
-                android:layout_height="95dp"
+                android:id="@+id/imgViewMyPost"
+                android:layout_width="113dp"
+                android:layout_height="118dp"
                 android:layout_below="@id/Edit_Location"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                app:srcCompat="@mipmap/ic_launcher_round" />
+                android:layout_marginTop="55dp"
+                app:srcCompat="@mipmap/ic_launcher_round"
+                tools:srcCompat="@drawable/ic_person_black_24dp" />
 
             <EditText
                 android:id="@+id/Edit_CompanyName"
-                android:layout_width="match_parent"
+                android:layout_width="273dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Edit_Location"
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/imgView_MyPost"
-                android:layout_toRightOf="@id/imgView_MyPost"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/imgViewMyPost"
+                android:layout_toRightOf="@id/imgViewMyPost"
                 android:text="CompanyName"
                 android:textColor="@android:color/white"
                 android:textSize="20dp"
@@ -74,25 +81,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Edit_CompanyName"
-                android:layout_marginStart="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/imgView_MyPost"
-                android:layout_toRightOf="@id/imgView_MyPost"
+                android:layout_marginStart="14dp"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="3dp"
+                android:layout_toEndOf="@id/imgViewMyPost"
+                android:layout_toRightOf="@id/imgViewMyPost"
                 android:text="Post On What Date"
                 android:textColor="@color/grey"
                 android:textSize="18dp" />
 
             <EditText
                 android:id="@+id/Edit_Salary"
-                android:layout_width="149dp"
-                android:layout_height="wrap_content"
+                android:layout_width="179dp"
+                android:layout_height="57dp"
                 android:layout_below="@id/Edit_Date"
-                android:layout_marginStart="145dp"
-                android:layout_marginLeft="145dp"
+                android:layout_marginStart="77dp"
+                android:layout_marginLeft="77dp"
                 android:layout_marginTop="6dp"
-                android:layout_toEndOf="@id/imgView_MyPost"
-                android:layout_toRightOf="@id/imgView_MyPost"
+                android:layout_toEndOf="@id/imgViewMyPost"
+                android:layout_toRightOf="@id/imgViewMyPost"
                 android:text="RM1800 /Month"
                 android:textColor="@color/colorAccent"
                 android:textSize="18dp"
@@ -125,6 +132,7 @@
             app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </FrameLayout>
